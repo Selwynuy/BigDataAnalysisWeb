@@ -1,3 +1,4 @@
+/* === Base Styles === */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
@@ -10,20 +11,28 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  background: white;
+  background: #fff;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+/* === Headings === */
+h1,
+.download-section h3,
+.file-info-card h3 {
   color: #2c3e50;
+}
+
+h1 {
   margin-bottom: 30px;
   border-bottom: 2px solid #eee;
   padding-bottom: 10px;
 }
 
-.input-section {
+/* === Input & Form Sections === */
+.input-section,
+.file-info-section {
   margin-bottom: 30px;
   background: #f8f9fa;
   padding: 20px;
@@ -33,18 +42,22 @@ h1 {
 .command-input,
 .dropdown-section {
   display: flex;
+  align-items: center;
   gap: 10px;
   margin-bottom: 15px;
-  align-items: center;
 }
 
-input[type="text"] {
-  flex-grow: 1;
+input[type="text"],
+select {
   padding: 12px;
   border: 2px solid #ddd;
   border-radius: 6px;
   font-size: 16px;
   transition: border-color 0.3s;
+}
+
+input[type="text"] {
+  flex-grow: 1;
 }
 
 input[type="text"]:focus {
@@ -53,22 +66,23 @@ input[type="text"]:focus {
 }
 
 select {
-  padding: 12px;
-  border: 2px solid #ddd;
+  background-color: #fff;
+}
+
+/* === Buttons === */
+button,
+.download-btn {
+  padding: 12px 24px;
+  border: none;
   border-radius: 6px;
   font-size: 16px;
-  background-color: white;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
 button {
-  padding: 12px 24px;
   background: #3498db;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background 0.3s;
+  color: #fff;
 }
 
 button:hover {
@@ -80,6 +94,22 @@ button:disabled {
   cursor: not-allowed;
 }
 
+.download-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #27ae60;
+  color: #fff;
+  text-decoration: none;
+}
+
+.download-btn:hover {
+  background: #219653;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* === Results === */
 .results-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -88,11 +118,11 @@ button:disabled {
 }
 
 .result-card {
-  background: white;
+  background: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   border-left: 4px solid #3498db;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .result-card h4 {
@@ -117,78 +147,25 @@ button:disabled {
   border-bottom: none;
 }
 
-.error {
-  background: #fdecea;
-  color: #c62828;
-  padding: 15px;
-  border-radius: 6px;
+/* === Errors & Suggestions === */
+.error,
+.error-message {
   display: flex;
   align-items: center;
   gap: 10px;
-}
-
-.download-section {
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px solid #eee;
-}
-
-.download-section h3 {
-  color: #2c3e50;
-}
-
-.download-options {
-  display: flex;
-  gap: 15px;
-  margin-top: 15px;
-  flex-wrap: wrap;
-}
-
-.download-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 20px;
-  background: #27ae60;
-  color: white;
-  text-decoration: none;
   border-radius: 6px;
-  transition: all 0.3s;
+  padding: 15px;
 }
 
-.download-btn:hover {
-  background: #219653;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 15px;
-  }
-
-  .command-input,
-  .dropdown-section {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .download-options {
-    flex-direction: column;
-  }
-
-  .download-btn {
-    justify-content: center;
-  }
-}
-.error-message {
+.error {
+  background: #fdecea;
   color: #c62828;
+}
+
+.error-message {
   background: #ffebee;
+  color: #c62828;
   padding: 8px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
 .error-message i {
@@ -203,4 +180,114 @@ button:disabled {
 .suggestions li {
   margin-bottom: 5px;
   color: #2c3e50;
+}
+
+/* === File Info & Column Types === */
+.file-info-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.file-info-card h3 {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.column-types {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.column-types th,
+.column-types td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.column-types th {
+  background: #f1f1f1;
+}
+
+.dtype-object {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.dtype-int64,
+.dtype-float64 {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.dtype-bool {
+  color: #3498db;
+  font-weight: bold;
+}
+
+/* === Data Preview Table === */
+.preview-table-container {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.preview-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+}
+
+.preview-table th,
+.preview-table td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  white-space: nowrap;
+}
+
+.preview-table th {
+  background: #f1f1f1;
+  position: sticky;
+  top: 0;
+}
+
+.preview-table tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+/* === Download Section === */
+.download-section {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.download-options {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .command-input,
+  .dropdown-section,
+  .download-options {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .download-btn {
+    justify-content: center;
+  }
 }

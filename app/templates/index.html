@@ -1,24 +1,57 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Upload Dataset</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
+    <script>
+        function showLoading() {
+            const btn = document.querySelector('.upload-btn');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            btn.disabled = true;
+        }
+    </script>
+  </head>
+  <body>
     <div class="container">
-        <h1>Upload Your Dataset</h1>
-        <form method="POST" enctype="multipart/form-data">
-            <div class="upload-box">
-                <input type="file" name="file" id="fileInput" accept=".csv,.xlsx,.xls">
-                <label for="fileInput" class="file-label">
-                    <i class="fas fa-cloud-upload-alt"></i>
-                    <span>Choose a CSV or Excel file</span>
-                </label>
-                <button type="submit" class="upload-btn">Upload and Analyze</button>
-            </div>
-        </form>
-        <p class="file-requirements">Supports CSV, XLSX files (max 20MB)</p>
+      <h1>Upload Your Dataset</h1>
+
+      <div class="upload-info">
+        <p>
+          <i class="fas fa-info-circle"></i> <strong>File Requirements:</strong>
+        </p>
+        <ul>
+          <li>Maximum file size: 20MB</li>
+          <li>Supported formats: CSV, XLSX, XLS</li>
+          <li>First row should contain column headers</li>
+          <li>Maximum recommended size: 20,000 rows</li>
+        </ul>
+      </div>
+
+      <form method="POST" enctype="multipart/form-data" onsubmit="showLoading()">
+        <div class="upload-box">
+          <input
+            type="file"
+            name="file"
+            id="fileInput"
+            accept=".csv,.xlsx,.xls"
+          />
+          <label for="fileInput" class="file-label">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <span>Choose a file or drag it here</span>
+          </label>
+          <button type="submit" class="upload-btn">
+            <i class="fas fa-upload"></i> Upload and Analyze
+          </button>
+        </div>
+      </form>
     </div>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-</body>
+  </body>
 </html>
