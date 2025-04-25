@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Data Analysis Results</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Data Analysis: {{ filename }}</h1>
+
+      <div class="input-section">
+        <div class="command-input">
+          <input
+            type="text"
+            id="commandInput"
+            placeholder="Type commands like 'mean of age' or 'show min of price'"
+          />
+          <button id="executeBtn">Execute</button>
+        </div>
+
+        <div class="dropdown-section">
+          <select id="columnSelect">
+            <option value="">Select a column</option>
+            {% for column in columns %}
+            <option value="{{ column }}">{{ column }}</option>
+            {% endfor %}
+          </select>
+
+          <select id="operationSelect">
+            <option value="mean">Mean</option>
+            <option value="median">Median</option>
+            <option value="mode">Mode</option>
+            <option value="min">Minimum</option>
+            <option value="max">Maximum</option>
+            <option value="std">Std Dev</option>
+          </select>
+
+          <button id="dropdownExecuteBtn">Analyze</button>
+        </div>
+      </div>
+
+      <div id="resultsContainer">
+        <!-- Results will appear here dynamically -->
+      </div>
+
+      <div class="download-section">
+        <h3>Download Options</h3>
+        <div class="download-options">
+          <a
+            href="{{ url_for('main.download_original', filename=filename) }}"
+            class="download-btn"
+          >
+            <i class="fas fa-file-download"></i> Original File
+          </a>
+          <a
+            href="{{ url_for('main.download_analysis', filename=filename) }}"
+            class="download-btn"
+          >
+            <i class="fas fa-file-csv"></i> Analysis (CSV)
+          </a>
+          <a
+            href="{{ url_for('main.download_report', filename=filename) }}"
+            class="download-btn"
+          >
+            <i class="fas fa-file-pdf"></i> Report (PDF)
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>

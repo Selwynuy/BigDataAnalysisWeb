@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Dataset</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Your Dataset</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="upload-box">
+                <input type="file" name="file" id="fileInput" accept=".csv,.xlsx,.xls">
+                <label for="fileInput" class="file-label">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <span>Choose a CSV or Excel file</span>
+                </label>
+                <button type="submit" class="upload-btn">Upload and Analyze</button>
+            </div>
+        </form>
+        <p class="file-requirements">Supports CSV, XLSX files (max 20MB)</p>
+    </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</body>
+</html>
